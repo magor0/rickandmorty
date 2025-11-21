@@ -1,0 +1,15 @@
+
+ * Az oldal háttérszíne darksalmon (vagy valamilyen)!
+ * Egy középre igazított területen helyezzünk el két kicsi (150x150)
+   és egy nagy (300x300) méretű képet!
+ * Nagykép 10px lekerekített, egy 10px belső margójú fehér területben,
+   mögötte 0px 0px 5px fekete árnyékkal!
+   Alatta a név és a sorszám 16pt magas, félkövér!
+ * A képeket és a hozzájuk tartozó neveket, a
+   https://rickandmortyapi.com/api/character/1
+   API segítségével szerezzük meg!
+   Az útvonal utolsó része a sorszám (1-826)!
+   A bal oldali kiskép az előző (1 előtt 826),
+   a jobb oldali kiskép pedig a következő (826 után 1) képet adja!
+
+ Publikáljuk az oldalt a github szerverén!

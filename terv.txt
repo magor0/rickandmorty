@@ -1,0 +1,14 @@
+
+ [ < ] #1 [ > ]  // 1-40
+ 
+ let szam = 1;
+ 
+ <input... onclick="katt(-1);">
+ #<span id="szam">1</span>
+ <input... onclick="katt(+1);">
+ 
+ async function elker() {
+	let resp = await fetch("url...");
+	let json = await resp.json();
+	console.log(json);
+ }

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rick and Morty karakterek</title>
+    <style>
+        body {
+            background-color: darksalmon;
+        }
+        #doboz {
+            display: flex;
+            gap: 10px;
+            width: 650px;
+            margin: 0px auto;
+        }
+        #kep1, #kep3 {
+            width: 150px; height: 150px;
+            border: 1px solid black;
+        }
+        #kep2 {
+            width: 300px; height: 300px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 5px black;
+        }
+        #nagydoboz {
+            background-color: white;
+            border: 1px solid black;
+            padding: 10px;
+        }
+        #adatok {
+            font-size: 16pt;
+            font-weight: bold;
+            text-align: center;
+            margin: 0px;
+        }
+    </style>
+    <script>
+        let id = 1;
+        function kovetkezo(){
+            id++;
+            if (id > 826) {
+                id = 1;
+            }
+            mutat();
+        }
+        function elozo(){
+            id--;
+            if (id < 1) {
+                id = 826;
+            }
+            mutat();
+        }
+        async function mutat() {
+            let resp = await fetch(`https://rickandmortyapi.com/api/character/${id}`);
+            let adat = await resp.json();
+            document.getElementById("adatok").innerHTML = `${adat.name} (#${id})`;
+            document.getElementById("kep2").src = adat.image;
+
+            let next = id + 1;
+            if (next > 826) next = 1;
+            resp = await fetch(`https://rickandmortyapi.com/api/character/${next}`);
+            adat = await resp.json();
+            document.getElementById("kep3").src = adat.image;
+
+            let prev = id - 1;
+            if (prev < 1) prev = 826;
+            resp = await fetch(`https://rickandmortyapi.com/api/character/${prev}`);
+            adat = await resp.json();
+            document.getElementById("kep1").src = adat.image;
+        }
+    </script>
+</head>
+<body>
+    
+    <div id="doboz">
+        <img id="kep1" onclick="elozo();" src="https://rickandmortyapi.com/api/character/avatar/826.jpeg">
+        <div id="nagydoboz">
+            <img id="kep2" src="https://rickandmortyapi.com/api/character/avatar/1.jpeg">
+            <p id="adatok">Rick Sanchez (#1)</p>
+        </div>
+        <img id="kep3" onclick="kovetkezo();" src="https://rickandmortyapi.com/api/character/avatar/2.jpeg">
+    </div>
+
+</body>
+</html>
